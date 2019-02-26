@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_package = "com.travel.grpc";
+option optimize_for = SPEED;
+option java_outer_classname = "DistanceProto";
+
+
+enum DistanceUnits {
+  KILOMETERS = 0;
+  MILES = 1;
+}
+
+message Location {
+  double longitude = 1;
+  double latitude = 2;
+}
+
+message Locations {
+  Location start = 1;
+  Location end = 2;
+  DistanceUnits units = 3;
+}
+
+message Distance {
+  double value = 1;
+  DistanceUnits units = 2;  
+}
+
+service DistanceService {
+  rpc CalculateDistance (Locations) returns (Distance) {}
+}
+
+

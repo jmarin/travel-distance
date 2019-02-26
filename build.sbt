@@ -12,17 +12,18 @@ lazy val travelDistance = (project in file("."))
   .aggregate(distanceApi, distanceImpl)
 
 lazy val distanceApi = (project in file("distance-api"))
-  .settings(commonSettings:_*)
-  
-
-lazy val distanceImpl = (project in file("distance-impl"))
   .enablePlugins(AkkaGrpcPlugin)
   .settings(commonSettings:_*)
   .settings(
-    akkaGrpcGeneratedSources := Seq(AkkaGrpc.Server),
-    //Generate both Java and Scala API's
+   //Generate both Java and Scala API's
     akkaGrpcGeneratedLanguages := Seq(AkkaGrpc.Scala, AkkaGrpc.Java),
     //Disable 'flat_package' option to avoid conflicts between both languages implementations
-    akkaGrpcCodeGeneratorSettings := akkaGrpcCodeGeneratorSettings.value.filterNot(_ == "flat_package"),
-    libraryDependencies ++= commonDeps ++ akkaHttpDeps,
+    akkaGrpcCodeGeneratorSettings := akkaGrpcCodeGeneratorSettings.value.filterNot(_ == "flat_package")
+  )
+  
+
+lazy val distanceImpl = (project in file("distance-impl"))
+  .settings(commonSettings:_*)
+  .settings(
+    libraryDependencies ++= commonDeps ++ akkaHttpDeps
   ).dependsOn(distanceApi)
