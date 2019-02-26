@@ -7,16 +7,15 @@ lazy val commonDeps = testDeps
 lazy val catsDeps = Seq(cats)
 lazy val akkaHttpDeps = Seq(akkaHttp, akkaStream)
 
-lazy val howFar = (project in file("."))
+lazy val travelDistance = (project in file("."))
   .settings(commonSettings:_*)
   .aggregate(service)
 
-lazy val protobuf = (project in file("protobuf"))
-  .enablePlugins(AkkaGrpcPlugin)
+lazy val distanceApi = (project in file("distance-api"))
   .settings(commonSettings:_*)
   
 
-lazy val service = (project in file("service"))
+lazy val distanceImpl = (project in file("distance-impl"))
   .enablePlugins(AkkaGrpcPlugin)
   .settings(commonSettings:_*)
   .settings(
@@ -26,4 +25,4 @@ lazy val service = (project in file("service"))
     //Disable 'flat_package' option to avoid conflicts between both languages implementations
     akkaGrpcCodeGeneratorSettings := akkaGrpcCodeGeneratorSettings.value.filterNot(_ == "flat_package"),
     libraryDependencies ++= commonDeps ++ akkaHttpDeps,
-  )
+  ).dependsOn(distanceApi)
