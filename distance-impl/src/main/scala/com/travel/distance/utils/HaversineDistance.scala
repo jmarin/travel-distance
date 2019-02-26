@@ -5,7 +5,7 @@ import scala.math._
 object HaversineDistance {
   private val R = 6372.8 //earth radius in km
 
-  def haversine(lat1: Double,
+  def calculate(lat1: Double,
                 lon1: Double,
                 lat2: Double,
                 lon2: Double): Double = {
