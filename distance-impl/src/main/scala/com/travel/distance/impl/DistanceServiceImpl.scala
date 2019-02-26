@@ -19,6 +19,7 @@ class DistanceServiceImpl extends DistanceService {
     val distance = units match {
       case KILOMETERS => d
       case MILES      => d * 0.621371
+      case _          => 0
     }
     Future.successful(Distance(distance))
   }

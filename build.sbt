@@ -1,7 +1,7 @@
 import BuildSettings._
 import Dependencies._
 
-lazy val testDeps = Seq(scalatest, scalacheck)
+lazy val testDeps = Seq(scalatest, scalacheck, novocode, junit, akkaStreamTestKit)
 
 lazy val commonDeps = testDeps
 lazy val catsDeps = Seq(cats)
@@ -23,6 +23,10 @@ lazy val distanceApi = (project in file("distance-api"))
   
 
 lazy val distanceImpl = (project in file("distance-impl"))
+  .enablePlugins(JavaAgent)
+  .settings(
+    javaAgents += "org.mortbay.jetty.alpn" % "jetty-alpn-agent" % "2.0.7" % "runtime"
+  )
   .settings(commonSettings:_*)
   .settings(
     libraryDependencies ++= commonDeps ++ akkaHttpDeps

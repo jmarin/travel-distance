@@ -8,4 +8,6 @@ object Dependencies {
   lazy val akkaStream = "com.typesafe.akka" %% "akka-stream" % akkaVersion
   lazy val akkaStreamTestKit = "com.typesafe.akka" %% "akka-stream-testkit" % akkaVersion % Test
   lazy val akkaHttp = "com.typesafe.akka" %% "akka-http" % akkaHttpVersion
+  lazy val junit = "junit" % "junit" % junitVersion % Test
+  lazy val novocode = "com.novocode" % "junit-interface" % novocodeVersion % Test
 }

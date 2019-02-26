@@ -4,4 +4,6 @@ object Version {
   val catsVersion = "1.5.0"
   val akkaVersion = "2.5.21"
   val akkaHttpVersion = "10.1.7"
+  val junitVersion = "4.12"
+  val novocodeVersion = "0.11"
 }
