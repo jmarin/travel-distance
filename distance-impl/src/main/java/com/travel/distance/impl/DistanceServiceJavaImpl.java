@@ -19,6 +19,16 @@ public class DistanceServiceJavaImpl implements DistanceService {
         double lon2 = end.getLongitude();
 
         double d = HaversineDistance.calculate(lat1, lon1, lat2, lon2);
-        return CompletableFuture.completedFuture(Distance.newBuilder().setUnits(units).setValue(d).build());
+
+        double distance = 0d;
+        switch (units) {
+            case KILOMETERS:
+                distance = d;
+                break;
+            case MILES:
+                distance = d * 0.621371;
+                break;
+        }
+        return CompletableFuture.completedFuture(Distance.newBuilder().setUnits(units).setValue(distance).build());
     }
 }
