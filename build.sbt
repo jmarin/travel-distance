@@ -9,7 +9,7 @@ lazy val akkaHttpDeps = Seq(akkaHttp, akkaStream)
 
 lazy val travelDistance = (project in file("."))
   .settings(commonSettings:_*)
-  .aggregate(service)
+  .aggregate(distanceApi, distanceImpl)
 
 lazy val distanceApi = (project in file("distance-api"))
   .settings(commonSettings:_*)
