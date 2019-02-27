@@ -17,7 +17,7 @@ lazy val distanceApi = (project in file("distance-api"))
   .settings(
    //Generate both Java and Scala API's
     akkaGrpcGeneratedLanguages := Seq(AkkaGrpc.Scala, AkkaGrpc.Java),
-    //Disable 'flat_package' option to avoid conflicts between both languages implementations
+    //Disable 'flat_package' option to avoid conflicts between both language implementations
     akkaGrpcCodeGeneratorSettings := akkaGrpcCodeGeneratorSettings.value.filterNot(_ == "flat_package")
   )
   
@@ -31,3 +31,8 @@ lazy val distanceImpl = (project in file("distance-impl"))
   .settings(
     libraryDependencies ++= commonDeps ++ akkaHttpDeps
   ).dependsOn(distanceApi)
+
+
+lazy val distanceClient = (project in file("distance-client"))
+  .settings(commonSettings: _*)
+  .dependsOn(distanceApi)
