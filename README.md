@@ -16,7 +16,7 @@ between New York City and San Francisco
 
 ### Java
 
-From an `sbt` prompt issue `project distanceClient` and the `runMain com.travel.distance.client.DistanceClientJava`. The application should display the Haversine distance
+From an `sbt` prompt issue `project distanceClient` and then `runMain com.travel.distance.client.DistanceClientJava`. The application should display the Haversine distance
 between New York City and San Francisco
 
 ## Deploying
