@@ -11,7 +11,7 @@ To run sample service, from an `sbt` prompt issue `reStart`. A server with the f
 
 ### Scala
 
-From an `sbt` prompt issue `project distanceClient` and the `runMain com.travel.distance.client.DistanceClient`. The application should display the Haversine distance
+From an `sbt` prompt issue `project distanceClient` and then `runMain com.travel.distance.client.DistanceClient`. The application should display the Haversine distance
 between New York City and San Francisco
 
 ### Java
